@@ -7,18 +7,35 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    @State var presentation: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack{
+            Button(action: {
+                presentation.toggle()
+            }, label:{
+                Text("Show presentation")
+                    .bold()
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 50)
+                    .background(Color.blue)
+            })
+            .sheet(isPresented: $presentation) {
+                Card()
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+                //     .presentationDetents([.fraction(0.1)])
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
+
+

@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct BottomCard: View {
+struct Card: View {
     
-
+    @State var cardShow:Bool = false
+    
     var body: some View{
         VStack{
             Spacer()
@@ -19,18 +20,28 @@ struct BottomCard: View {
                 .font(.system(size: 30))
                 .padding()
             
-            Text("you can create awesome photo gridsand share them will all of your friends.")
+            Text("You can create awesome photo gridsand share them will all of your friends.")
                 .font(.system(size: 18))
                 .multilineTextAlignment(.center)
             
-            Image("Image")
+            Image("card")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            
+//            Button(action: {
+//                cardShow.toggle()
+//            }, label: {
+//                Text("Dismiss")
+//                    .bold()
+//                    .foregroundColor(.white)
+//                    .background(Color.pink)
+//                    .frame(width: 200, height: 50)
+//                    .cornerRadius(8)
+//            })
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
 #Preview {
-    BottomCard()
+    Card()
 }
